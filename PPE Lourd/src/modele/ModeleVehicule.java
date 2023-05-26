@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import controleur.Vehicule;
 
 public class ModeleVehicule {
-    private static Bdd uneBdd = new Bdd("3.227.101.247:13392", "autoecole", "alexys", "alexys");
+    private static Bdd uneBdd = new Bdd("localhost", "autoecole", "louis", "louis");
 
     public static void insertVehicule(Vehicule unVehicule) {
-        String requete = "INSERT INTO vehicule VALUES ( '"+ unVehicule.getMatricule() + "','"
+        String requete = "INSERT INTO vehicule VALUES ( '" + unVehicule.getMatricule() + "','"
                 + unVehicule.getType_v() + "','"
                 + unVehicule.getModel_v() + "','"
                 + unVehicule.getMarque_v() + "','"

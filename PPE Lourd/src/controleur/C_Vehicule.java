@@ -1,6 +1,7 @@
 package controleur;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import modele.ModeleVehicule;
 

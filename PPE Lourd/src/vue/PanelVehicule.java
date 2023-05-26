@@ -8,6 +8,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -71,8 +72,7 @@ public class PanelVehicule extends PanelPrincipal implements ActionListener {
         this.panelForm.add(this.btnEnregistrer);
 
         // construction de la JTable
-        String entetes[] = { "Matricule", "Type", "Modèle", "Marque", "Année d'immatriculation", "Année d'achat",
-                "Type boite", "Km" };
+        String entetes[] = { "Matricule", "Type", "Modèle", "Marque", "Année d'immatriculation", "Année d'achat", "Type boite", "Km" };
         Object donnees[][] = this.getDonnees();
 
         this.unTableau = new Tableau(donnees, entetes);
@@ -201,7 +201,7 @@ public class PanelVehicule extends PanelPrincipal implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.btnAnnuler) {
             this.viderChamps();
-            // on remet l'input matricule en mode 'enabled'
+            //on remet l'input matricule en mode 'enabled'
             txtMatricule.setEnabled(true);
         } else if (e.getSource() == this.btnEnregistrer && this.btnEnregistrer.getText().equals("Enregistrer")) {
             if (this.txtType.getText().equals("")
@@ -222,8 +222,7 @@ public class PanelVehicule extends PanelPrincipal implements ActionListener {
                 Float km = Float.parseFloat(this.txtKm.getText());
 
                 // instancier un Vehicule
-                Vehicule unVehicule = new Vehicule(matricule, type, modele, marque, anneeImmat, anneeAchat, typeBoite,
-                        km);
+                Vehicule unVehicule = new Vehicule(matricule,type, modele, marque, anneeImmat, anneeAchat, typeBoite, km);
 
                 // on l'enregistre dans la base de donnÃ©es
                 C_Vehicule.insertVehicule(unVehicule);
@@ -233,8 +232,7 @@ public class PanelVehicule extends PanelPrincipal implements ActionListener {
 
                 // on recharge la JTable
                 Object ligne[] = { unVehicule.getMatricule(), unVehicule.getType_v(), unVehicule.getModel_v(),
-                        unVehicule.getMarque_v(), unVehicule.getAnneimmatri_v(), unVehicule.getAnneachat_v(),
-                        unVehicule.getType_boite(), unVehicule.getKm() };
+                        unVehicule.getMarque_v(), unVehicule.getAnneimmatri_v(), unVehicule.getAnneachat_v(), unVehicule.getType_boite(), unVehicule.getKm() };
                 this.unTableau.insertLigne(ligne);
 
                 // on affiche un message de confirmation
@@ -253,8 +251,7 @@ public class PanelVehicule extends PanelPrincipal implements ActionListener {
                         JOptionPane.ERROR_MESSAGE);
             } else {
                 int numLigne = this.tableUser.getSelectedRow();
-                // int idVehicule = Integer.parseInt(this.tableUser.getValueAt(numLigne,
-                // 0).toString());
+                // int idVehicule = Integer.parseInt(this.tableUser.getValueAt(numLigne, 0).toString());
 
                 String matricule = this.txtMatricule.getText();
                 String type = this.txtType.getText();
@@ -265,25 +262,24 @@ public class PanelVehicule extends PanelPrincipal implements ActionListener {
                 String typeBoite = this.cbxTypeBoite.getSelectedItem().toString();
                 Float km = Float.parseFloat(this.txtKm.getText());
 
+
                 // on instancie un Vehicule
-                Vehicule unVehicule = new Vehicule(matricule, type, modele, marque, anneeImmat, anneeAchat, typeBoite,
-                        km);
+                Vehicule unVehicule = new Vehicule(matricule, type, modele, marque, anneeImmat, anneeAchat, typeBoite, km);
 
                 // on le modifie dans la base de donnÃ©es
                 C_Vehicule.updateVehicule(unVehicule);
 
                 // on recharge la JTable
                 Object ligne[] = { unVehicule.getMatricule(), unVehicule.getType_v(), unVehicule.getModel_v(),
-                        unVehicule.getMarque_v(), unVehicule.getAnneimmatri_v(), unVehicule.getAnneachat_v(),
-                        unVehicule.getType_boite(), unVehicule.getKm() };
+                        unVehicule.getMarque_v(), unVehicule.getAnneimmatri_v(), unVehicule.getAnneachat_v(), unVehicule.getType_boite(), unVehicule.getKm() };
                 this.unTableau.updateLigne(numLigne, ligne);
                 // on affiche un message de confirmation
                 JOptionPane.showMessageDialog(this, "Véhicule modifié avec succès");
 
                 // on vide les champs
                 this.viderChamps();
-
-                // on remet l'input matricule en mode 'enabled'
+                
+                //on remet l'input matricule en mode 'enabled'
                 txtMatricule.setEnabled(true);
 
                 // on remet le bouton enregistrer en mode "Enregistrer"
