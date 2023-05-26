@@ -1,44 +1,50 @@
 package controleur;
 
 public class Vehicule {
-    private int id_v;
-    private String type_v, model_v, marque_v, annneimmatri_v, anneachat_v;
+	private Float km;
+	private String type_v, model_v, marque_v, anneimmatri_v, anneachat_v,type_boite,matricule;
 
-    public Vehicule(int id_v, String type_v, String model_v, String marque_v,
-            String annneimmatri_v, String anneachat_v) {
-        this.id_v = id_v;
-        this.type_v = type_v;
-        this.model_v = model_v;
-        this.marque_v = marque_v;
-        this.annneimmatri_v = annneimmatri_v;
-        this.anneachat_v = anneachat_v;
-    }
-
-    public Vehicule(String type_v, String model_v, String marque_v,
-            String annneimmatri_v, String anneachat_v) {
-        this.id_v = 0;
-        this.type_v = type_v;
-        this.model_v = model_v;
-        this.marque_v = marque_v;
-        this.annneimmatri_v = annneimmatri_v;
-        this.anneachat_v = anneachat_v;
-    }
-
-    public Vehicule() {
-        this.id_v = 0;
-        this.type_v = "";
-        this.model_v = "";
-        this.marque_v = "";
-        this.annneimmatri_v = "";
-        this.anneachat_v = "";
-    }
-
-	public int getId_v() {
-		return id_v;
+	public Vehicule(String matricule, String type_v, String model_v, String marque_v,
+			String anneimmatri_v, String anneachat_v, String type_boite, Float km) {
+		this.matricule = matricule;
+		this.type_v = type_v;
+		this.model_v = model_v;
+		this.marque_v = marque_v;
+		this.anneimmatri_v = anneimmatri_v;
+		this.anneachat_v = anneachat_v;
+		this.type_boite = type_boite;
+		this.km = km;
 	}
 
-	public void setId_v(int id_v) {
-		this.id_v = id_v;
+	public Vehicule(String type_v, String model_v, String marque_v,
+			String anneimmatri_v, String anneachat_v, String type_boite, Float km) {
+		this.matricule = "";
+		this.type_v = type_v;
+		this.model_v = model_v;
+		this.marque_v = marque_v;
+		this.anneimmatri_v = anneimmatri_v;
+		this.anneachat_v = anneachat_v;
+		this.type_boite = type_boite;
+		this.km = km;
+	}
+
+	public Vehicule() {
+		this.matricule = "";
+		this.type_v = "";
+		this.model_v = "";
+		this.marque_v = "";
+		this.anneimmatri_v = "";
+		this.anneachat_v = "";
+		this.type_boite = "";
+		this.km = (float) 0;
+	}
+
+	public String getMatricule() {
+		return matricule;
+	}
+
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
 	}
 
 	public String getType_v() {
@@ -65,12 +71,12 @@ public class Vehicule {
 		this.marque_v = marque_v;
 	}
 
-	public String getAnnneimmatri_v() {
-		return annneimmatri_v;
+	public String getAnneimmatri_v() {
+		return anneimmatri_v;
 	}
 
-	public void setAnnneimmatri_v(String annneimmatri_v) {
-		this.annneimmatri_v = annneimmatri_v;
+	public void setAnneimmatri_v(String anneimmatri_v) {
+		this.anneimmatri_v = anneimmatri_v;
 	}
 
 	public String getAnneachat_v() {
@@ -80,5 +86,20 @@ public class Vehicule {
 	public void setAnneachat_v(String anneachat_v) {
 		this.anneachat_v = anneachat_v;
 	}
-        
+
+	public String getType_boite() {
+		return type_boite;
+	}
+
+	public void setType_boite(String type_boite) {
+		this.type_boite = type_boite;
+	}
+
+	public Float getKm() {
+		return km;
+	}
+
+	public void setKm(Float km) {
+		this.km = km;
+	}
 }

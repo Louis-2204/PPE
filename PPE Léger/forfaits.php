@@ -32,22 +32,11 @@
               </svg> </span> </div>";
         } else {
             $_SESSION['achat'] = true;
-            header("location: index.php?page=99&offre=PermisA");
-        }
-    }
-
-
-    if (isset($_POST['Submit-Code'])) {
-        if (!isset($_SESSION['User'])) { //Si pas connecté, redirect login/register
-            $_SESSION['redirection'] = "index.php?page=1"; // on set une variable de session qui est un lien de redirection
-            header("location: index.php?page=9"); // cette variable de session sera utiliser dans l'accueil puis "unset" pour revenir à cette page après inscription/connexion
-        } else if (!empty($_SESSION['formation'])) { //Si connecté et déjà inscrit à une formation
-            echo "<div class='col-md-3 alert alert-danger'>Vous avez déjà une formation<span onclick='closeAlertDanger()'> <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x-lg' viewBox='0 0 16 16'>
-                <path d='M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z'/>
-              </svg> </span> </div>";
-        } else {
-            $_SESSION['achat'] = true;
-            header("location: index.php?page=99&offre=Code");
+            if($_POST['typePermisA'] == "225"){
+                header("location: index.php?page=99&offre=PasserelleA2versA");
+            }else{
+                header("location: index.php?page=99&offre=PermisA");
+            }
         }
     }
 
@@ -74,10 +63,9 @@
                 <h1 class="slogan my-5 text-center">Nos formations!</h1>
 
 
-                <div class="bouttons-container py-5">
+                <div class="bouttons-container py-5 mx-auto">
                     <div id="btn-PermisB" class="boutton rounded-2 boutton-active" onclick="Display_PermisB()">Permis B</div>
                     <div id="btn-PermisA" class="boutton rounded-2" onclick="Display_PermisA()">Permis A</div>
-                    <div id="btn-Code" class="boutton rounded-2" onclick="Display_Code()">Code</div>
                 </div>
             </div>
         </div>
@@ -239,7 +227,7 @@
                             <div class="d-flex input-form-gauche">
                                 <input class="form-check-input ms-5" id="BSR" type="radio" name="typePermisA" value="243" required>
                                 <div class="d-flex">
-                                    <label for="BSR">Parmis AM / BSR</label>
+                                    <label for="BSR">Permis AM / BSR</label>
                                     <div title="À partir de 14 ans, il est nécessaire pour conduire un scooter jusqu’à 50cc ou une voiturette." class="infos">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -276,49 +264,7 @@
 
 
 
-            <!-- CODE -->
-            <div class="form" id="form-Code">
-                <form action="" method="POST">
 
-                    <div class="form-title">
-                        <h1>Le code de la route</h1>
-                    </div>
-                    <div class="d-flex">
-                        <div class="form-total">
-                            <div class="d-flex input-form-gauche">
-                                <input class="form-check-input" id="Code" type="radio" name="Code" value="10" required>
-                                <div class="d-flex">
-                                    <label for="Code">Code</label>
-                                    <div title="Accès à une interface pour réviser le code sur Ornikar" class="infos">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex input-form-gauche">
-                                <input class="form-check-input" id="CodeR" type="radio" name="Code" value="30" required>
-                                <div class="d-flex">
-                                    <label for="CodeR">Code Réussite</label>
-                                    <div title="Accès à une interface pour réviser le code sur Ornikar + une session pour passer l'examen" class="infos">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-
-            <div class="btn-sinscrire" id="validate-Code">
-                <p id="Montant-Display3"></p>
-                <button id="validate-form-forfaits" name="Submit-Code">S'inscrire</button>
-            </div>
-
-            </form>
 
 
 
@@ -352,14 +298,10 @@
         echo "<script>Display_PermisA()</script>";
     }
 
-    if (isset($_GET['type']) && $_GET['type'] == "code") {
-        echo "<script>Display_Code()</script>";
-    }
-
     ?>
 
     <script>
         if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
+            window.history.replaceState(null, null, window.location.href); //pour pas re submit le form au refresh
         }
     </script>
